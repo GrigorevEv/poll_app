@@ -1,0 +1,8 @@
+li a {
+    color: white ;
+}
+
+body {
+    background: white url("images/image_with_questions.jpg") ;
+    background-size: 100%;
+}
