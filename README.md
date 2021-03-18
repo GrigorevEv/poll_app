@@ -62,7 +62,7 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-#### On english lanquage:
+#### In english lanquage:
 
 
 1. Clone the repository
