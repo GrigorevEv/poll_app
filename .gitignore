@@ -1,1 +1,2 @@
-poll_app_env/
+venv/
+.env
