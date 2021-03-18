@@ -1,6 +1,6 @@
 # Web application for polls
 
-##На русском языке:
+#### На русском языке:
 
 
 1. Клонируем репозиторий
@@ -62,7 +62,7 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-##On english lanquage:
+#### On english lanquage:
 
 
 1. Clone the repository
