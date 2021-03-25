@@ -3,6 +3,6 @@ li a {
 }
 
 body {
-    background: white url("images/image_with_questions.jpg") ;
+    background: rgb(255,239,194);
     background-size: 100%;
 }

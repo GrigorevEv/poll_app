@@ -8,7 +8,7 @@ SECRET_KEY = config('SECRET_KEY')
 
 DEBUG = config('DEBUG', cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [config('ALLOWED_HOSTS')]
 
 INSTALLED_APPS = [
     'polls.apps.PollsConfig',
@@ -87,3 +87,8 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+    ]
+
+STATIC_ROOT = BASE_DIR / 'staticfiles'
