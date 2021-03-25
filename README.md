@@ -7,45 +7,42 @@
 
 
 1. Клонируем репозиторий
-2. Устанавливаем пакет виртуального окружения:
+
+2. Создаем виртуальное окружение для нашего проекта. Переходим в корневую папку проекта и выполняем команду:
 ```
-pip3 install virtualenv
+python -m venv venv
 ```
-3. Создаем виртуальное окружение для нашего проекта. Переходим в корневую папку проекта и выполняем команду:
-```
-virtualenv venv
-```
-4. Активируем виртуальное окружение, находясь в корневой папке проекта:
+3. Активируем виртуальное окружение, находясь в корневой папке проекта:
 ```
 . venv/bin/activate
 ```
-5. Устанавливаем зависимости в ваше виртуальное окружение из файла requirements.txt:
+4. Устанавливаем зависимости в ваше виртуальное окружение из файла requirements.txt:
 ```
 pip install -r requirements.txt
 ```
-6. Устанавливаем PostgreSQL:
+5. Устанавливаем PostgreSQL:
 ```
 sudo apt install postgresql postgresql-contrib
 ```
-7. Устанавливаем пакеты для работы PostgreSQL с Python:
+6. Устанавливаем пакеты для работы PostgreSQL с Python:
 ```
 sudo apt-get install libpq-dev python-dev
 ```
-8. Заходим в PostgreSQL:
+7. Заходим в PostgreSQL:
 ```
 sudo -u postgres psql
 ```
-9. Создаем базу данных для нашего приложения :
+8. Создаем базу данных для нашего приложения :
 ```
 create database poll_app;
 ```
-10. Создаем роль админа для нашей базы данных с паролем:
+9. Создаем роль админа для нашей базы данных с паролем:
 ```
 create role poll_app with login superuser createdb createrole inherit replication connection limit -1 password 'admin';
 grant postgres to poll_app;
 ALTER DATABASE poll_app OWNER TO poll_app;
 ```
-11. Переименовываем файл .env.example в .env и заполняем соответствующими данными:
+10. Переименовываем файл .env.example в .env и заполняем соответствующими данными:
 ```
 SECRET_KEY=abc
 DEBUG=True
@@ -56,11 +53,11 @@ DB_PASSWORD=admin
 DB_HOST=127.0.0.1
 DB_PORT=5432
 ```
-12. Создаем таблицы в нашей базе данных:
+11. Создаем таблицы в нашей базе данных:
 ```
 python manage.py migrate
 ```
-13. Запускаем локальный сервер:
+12. Запускаем локальный сервер:
 ```
 python manage.py runserver
 ```
