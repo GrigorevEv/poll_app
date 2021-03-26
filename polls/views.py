@@ -10,7 +10,7 @@ from .models import Choice, Question
 
 def index(request):
     question_list = Question.objects.all()
-    return render(request, 'polls/post/index.html', {'question_list': question_list})    
+    return render(request, 'polls/post/index.html', {'question_list': question_list,'error_message': "You didn't select a choice."})    
 
 
 
@@ -24,10 +24,7 @@ def vote(request, question_id):
     try:
         selected_choice = question.choice_set.get(pk=request.POST['choice'])
     except (KeyError, Choice.DoesNotExist):
-        # Redisplay the question voting form.
-        return render(request, 'polls/post/index.html', {
-            'error_message': "You didn't select a choice.",
-            })
+        return HttpResponseRedirect(reverse('polls:index'))
     else:
         selected_choice.votes = F('votes') + 1
         selected_choice.save()
