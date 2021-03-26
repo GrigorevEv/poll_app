@@ -1,0 +1,23 @@
+{% extends "polls/base.html" %}
+{% block title %}Опросник{% endblock %}
+{% block content %}
+ {% if question_list %}
+   {% for question in question_list %}
+	<div class='question_block'>
+    <strong>{{ question.question_text }}</strong>
+    <form action="{% url 'polls:vote' question.id %}" method="post">
+     {% csrf_token %}
+     {% for choice in question.choice_set.all %}
+      <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+      <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+     {% endfor %}
+     <input type="submit" value="Vote">
+    </form>
+   	{{ question.pub_date }}
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+	</div>
+   {% endfor %}
+ {% else %}
+  <p>В данный момент нет доступных опросов</p>
+ {% endif %}
+{% endblock %}
