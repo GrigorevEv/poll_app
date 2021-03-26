@@ -16,7 +16,6 @@
       <input type="submit" value="Проголосовать">
      </form>
      <div class='date'>{{ question.pub_date }}</div>
-     {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 	</div>
    {% endfor %}
  {% else %}

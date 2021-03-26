@@ -10,7 +10,7 @@ from .models import Choice, Question
 
 def index(request):
     question_list = Question.objects.all()
-    return render(request, 'polls/post/index.html', {'question_list': question_list,'error_message': "You didn't select a choice."})    
+    return render(request, 'polls/post/index.html', {'question_list': question_list})    
 
 
 
