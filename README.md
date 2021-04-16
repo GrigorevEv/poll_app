@@ -1,10 +1,11 @@
 # Web application for polls
-
 Application for creating and administering polls
 
+## Requirements
+- Docker
+- Docker Compose
 
 ## For development
-
 1. Clone the repository
 2. Rename .env.example to .env and add your variables if necessary
 ```
@@ -25,7 +26,6 @@ docker exec -it poll_app_web_1 python manage.py createsuperuser
 6. Visit localhost:8000
 
 ## For production
-
 1. Clone the repository
 2. Rename .env.example to .env and add your variables if necessary
 ```
