@@ -5,3 +5,4 @@ docker-compose*
 .gitignore
 README.md
 LICENSE
+pg_data/
