@@ -1,9 +1,14 @@
 FROM python:3.9
 
-WORKDIR /usr/src/poll_app
+ENV PYTHONUNBUFFERED 1
 
-COPY . /usr/src/poll_app
+WORKDIR /poll_app
 
-EXPOSE 8000
+COPY . /poll_app
 
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+RUN groupadd -r www ;\
+    useradd -r -g www www ;\
+    pip install -r requirements.txt
+
+USER www
+
