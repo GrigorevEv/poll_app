@@ -33,7 +33,7 @@ mv .env.example .env
 ```
 3. Rename .env.example to .env for nginx and change the variables to yours
 ```
-mv nginx/.example.env nginx/.env
+mv nginx/.env.example nginx/.env
 ```
 3. Kill postgres processes if needed
 ```
