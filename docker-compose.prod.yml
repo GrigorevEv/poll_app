@@ -5,6 +5,9 @@ services:
     build: ./nginx
     ports:
       - '80:80'
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+      - static_volume:/poll_app/staticfiles
     env_file:
       - ./nginx/.env
     depends_on:
@@ -13,9 +16,10 @@ services:
   web:
     build: .
     command: bash -c "python manage.py migrate &&
-              gunicorn poll_app.wsgi:application -b 0.0.0.0:8000 --reload" 
+             python manage.py collectstatic --clear --noinput &&
+             gunicorn poll_app.wsgi:application -b 0.0.0.0:8000 --reload" 
     volumes:
-      - ./:/poll_app
+      - static_volume:/poll_app/staticfiles
     ports:
       - "8000:8000"
     depends_on:
@@ -29,3 +33,6 @@ services:
       - ./pg_data:/var/lib/postgresql/data/
     ports:
       - "5432:5432"
+
+volumes:
+  static_volume:
