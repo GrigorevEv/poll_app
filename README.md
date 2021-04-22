@@ -7,7 +7,7 @@ Application for creating and administering polls
 
 ## For development
 1. Clone the repository
-2. Rename .env.example to .env and add your variables if necessary
+2. Rename .env.example to .env and change the variables to yours if needed
 ```
 mv .env.example .env
 ```
@@ -27,9 +27,13 @@ docker exec -it poll_app_web_1 python manage.py createsuperuser
 
 ## For production
 1. Clone the repository
-2. Rename .env.example to .env and add your variables if necessary
+2. Rename .env.example to .env and and change the variables to yours if needed
 ```
 mv .env.example .env
+```
+3. Rename .env.example to .env for nginx and change the variables to yours
+```
+mv nginx/.example.env nginx/.env
 ```
 3. Kill postgres processes if needed
 ```
@@ -37,11 +41,11 @@ sudo pkill -u postgres
 ```
 4. Run the docker-compose file dev.yml
 ```
-docker-compose -f docker-compose.dev.yml up -d
+docker-compose -f docker-compose.prod.yml up -d
 ```
 5. Create a superuser to enter the admin area
 ```
 docker exec -it poll_app_web_1 python manage.py createsuperuser
 ```
-6. Visit localhost:8000
+6. Visit your host address
 
