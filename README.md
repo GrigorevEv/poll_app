@@ -23,7 +23,12 @@ docker-compose -f docker-compose.dev.yml up -d
 ```
 docker exec -it poll_app_web_1 python manage.py createsuperuser
 ```
-6. Visit localhost:8000
+6. If you want you can download my spasde_db database
+```
+docker exec -it poll_app_web_1 /bin/bash
+python manage.py loaddata space_db.json
+```
+7. Visit localhost:8000
 
 ## For production
 1. Clone the repository
@@ -47,5 +52,10 @@ docker-compose -f docker-compose.prod.yml up -d
 ```
 docker exec -it poll_app_web_1 python manage.py createsuperuser
 ```
-6. Visit your host address
+6. If you want you can download my spasde_db database
+```
+docker exec -it poll_app_web_1 /bin/bash
+python manage.py loaddata space_db.json
+```
+7. Visit your host address
 
