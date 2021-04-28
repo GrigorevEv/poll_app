@@ -5,11 +5,14 @@ from django.urls import reverse
 from django.views import generic
 from django.db.models import F
 from django.utils import timezone
-
 from .models import Choice, Question, RightAnswerExplanation
 
 
 def index(request):
+    '''
+    Generate questions and choices on the main page
+    with pagination
+    '''
     question_list = Question.objects.order_by('-pub_date')
     paginator = Paginator(question_list, 4)
     page = request.GET.get('page')
@@ -23,12 +26,18 @@ def index(request):
                  {'page': page,  'posts': posts})    
 
 
-
 class ResultsView(generic.DetailView):
+    '''
+    Generate result page after user vote
+    '''
     model = Question
     template_name = 'polls/post/results.html'
 
+
 def vote(request, question_id):
+    '''
+    Processes the user's vote
+    '''
     question = get_object_or_404(Question, pk=question_id)
     try:
         selected_choice = question.choice_set.get(pk=request.POST['choice'])

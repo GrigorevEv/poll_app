@@ -3,6 +3,9 @@ from .models import Choice, Question, RightAnswerExplanation
 
 
 class ChoiceInline(admin.TabularInline):
+    '''
+    Inline for question choices
+    '''
     model = Choice
     extra = 2
     min_num = 2
@@ -10,12 +13,18 @@ class ChoiceInline(admin.TabularInline):
 
 
 class RightAnswerExplanationInline(admin.TabularInline):
+    '''
+    Inline for question right answer
+    '''
     model = RightAnswerExplanation
     max_num = 1
     min_num = 1
 
 
 class QuestionAdmin(admin.ModelAdmin):
+    '''
+    Customasing question panel in admin area
+    '''
     fieldsets = [
         ('ТЕКСТ ВОПРОСА', {'fields':['question_text']}),
         ('ДАТА ПУБЛИКАЦИИ', {'fields':['pub_date']}),
