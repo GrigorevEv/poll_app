@@ -1,8 +1,8 @@
 {% extends "polls/base.html" %}
 {% block title %}Опросник{% endblock %}
 {% block content %}
- {% if question_list %}
-   {% for question in question_list %}
+ {% if posts %}
+   {% for question in posts %}
 	<div class='question_block'>
      <div class='question'>
  	  <h3>{{ question.question_text }}</h3>
@@ -21,4 +21,5 @@
  {% else %}
   <p>В данный момент нет доступных опросов</p>
  {% endif %}
+ <p>{% include 'pagination.html' with page=posts %}</p>
 {% endblock %}

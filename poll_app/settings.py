@@ -2,6 +2,8 @@ from decouple import config, Csv
 from pathlib import Path
 
 
+DEFAULT_AUTO_FIELD='django.db.models.AutoField'
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = config('SECRET_KEY')
