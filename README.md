@@ -23,7 +23,7 @@ docker-compose -f docker-compose.dev.yml up -d
 ```
 docker exec -it poll_app_web_1 python manage.py createsuperuser
 ```
-6. If you want you can download my spasde_db database
+6. If you want you can download my space_db database
 ```
 docker exec -it poll_app_web_1 /bin/bash
 python manage.py loaddata space_db.json
@@ -52,7 +52,7 @@ docker-compose -f docker-compose.prod.yml up -d
 ```
 docker exec -it poll_app_web_1 python manage.py createsuperuser
 ```
-6. If you want you can download my spasde_db database
+6. If you want you can download my space_db database
 ```
 docker exec -it poll_app_web_1 /bin/bash
 python manage.py loaddata space_db.json
