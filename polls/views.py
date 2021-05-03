@@ -9,10 +9,7 @@ from .models import Choice, Question, RightAnswerExplanation
 
 
 def index(request):
-    '''
-    Generate questions and choices on the main page
-    with pagination
-    '''
+    '''Generates questions and choices on the main page with pagination'''
     question_list = Question.objects.order_by('-pub_date')
     paginator = Paginator(question_list, 4)
     page = request.GET.get('page')
@@ -27,17 +24,13 @@ def index(request):
 
 
 class ResultsView(generic.DetailView):
-    '''
-    Generate result page after user vote
-    '''
+    '''Generates result page after user vote'''
     model = Question
     template_name = 'polls/post/results.html'
 
 
 def vote(request, question_id):
-    '''
-    Processes the user's vote
-    '''
+    '''Processes the user's vote'''
     question = get_object_or_404(Question, pk=question_id)
     try:
         selected_choice = question.choice_set.get(pk=request.POST['choice'])
@@ -46,5 +39,6 @@ def vote(request, question_id):
     else:
         selected_choice.votes = F('votes') + 1
         selected_choice.save()
-        return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
+        return HttpResponseRedirect(reverse('polls:results', 
+                                    args=(question.id,)))
 
