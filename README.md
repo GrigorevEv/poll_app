@@ -36,15 +36,11 @@ python manage.py loaddata space_db.json
 ```
 mv .env.example .env
 ```
-3. Rename .env.example to .env for nginx and change the variables to yours
-```
-mv nginx/.env.example nginx/.env
-```
 3. Kill postgres processes if needed
 ```
 sudo pkill -u postgres
 ```
-4. Run the docker-compose file dev.yml
+4. Run the docker-compose.prod.yml file
 ```
 docker-compose -f docker-compose.prod.yml up -d
 ```
@@ -57,5 +53,7 @@ docker exec -it poll_app_web_1 python manage.py createsuperuser
 docker exec -it poll_app_web_1 /bin/bash
 python manage.py loaddata space_db.json
 ```
-7. Visit your host address
+7. Run the Nginx container as shown in the link 
+https://github.com/GrigorevEv/Nginx_config_for_two_apps
+9. Visit your host address
 
